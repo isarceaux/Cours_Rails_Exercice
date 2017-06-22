@@ -1,0 +1,23 @@
+<h1><%=@article.title%></h1>
+
+<p><%=@article.content%></p>
+
+<h2>Commentaires</h2>
+
+<h3>Nouveau commentaire</h3>
+
+<%= form_tag "/#{@article.id}", method: "post" do %>
+    <input type="text" name="author" placeholder="Auteur" />
+    <p></p>
+    <input type="text" name="content" placeholder="Commentaire" />
+    <p></p>
+    <input type="submit" value="envoyer" />
+<%end%>
+
+<!-- L'objectif est d'afficher les différents commentaires-->
+<% @commentaires.each do |commentaire| %>
+	<p><em><%= commentaire.author %></em></p>
+	<p><%= commentaire.content %></p>
+<%end%>
+
+<p><a href="/">Retour à la liste des articles</a></p>
